@@ -27,6 +27,10 @@ RUN comfy model download --url "https://huggingface.co/lightx2v/Qwen-Image-Light
   --relative-path models/loras \
   --filename Qwen-Image-Lightning-4steps-V1.0.safetensors
 
-# Copy local static input files into the ComfyUI input directory (delete if not needed)
-# Assumes you have an 'input' folder next to your Dockerfile
-COPY input/ /comfyui/input/
+# (Optional) Copy local static input files into the ComfyUI input directory.
+# Disabled because the repo has no ./input folder; the COPY step fails if it doesn't exist.
+# To enable, create ./input and uncomment the line below.
+# COPY input/ /comfyui/input/
+
+# Ensure the input directory exists at runtime (the worker will upload to this dir).
+RUN mkdir -p /comfyui/input
