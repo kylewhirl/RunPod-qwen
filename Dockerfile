@@ -1,5 +1,6 @@
-# start from a clean base image (replace <version> with the desired release)
-FROM runpod/worker-comfyui:5.1.0-base
+FROM runpod/worker-comfyui:5.4.1-base
+
+ENV HF_HUB_ENABLE_HF_TRANSFER=1
 
 # install custom nodes using comfy-cli (not required for Qwen-Image-Edit; native in ComfyUI)
 # RUN comfy-node-install <your_custom_nodes_here>
